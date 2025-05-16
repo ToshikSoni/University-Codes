@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function getnum()
+        {
+            var num=0,out=1;
+            num=document.getElementById("num").value;
+            for(let i=1;i<num;i++)
+            {
+                out*=i;
+            }
+            document.getElementById("output").innerHTML="The factorial is: "+out;
+        }
+    </script>
+</head>
+<body>
+    <input type="number" placeholder="Enter Number" id="num">
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

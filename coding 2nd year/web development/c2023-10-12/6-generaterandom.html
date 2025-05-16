@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function getnum()
+        {
+            const d=new Date();
+            document.getElementById("output").innerHTML="The random number is: "+d.getMilliseconds();
+        }
+    </script>
+</head>
+<body>  
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

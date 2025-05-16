@@ -1,0 +1,7 @@
+use avaguardians;
+create table sensor(macsensor char(12), latitude float, longitude float, recordtime timestamp, primary key (macsensor));
+create table mainserver(macserver char(12), temperature float, humidity float, pressure float,
+	latitude float, longitude float, windspeed float, rain float, primary key (macserver));
+show tables;
+describe mainserver;
+describe sensor;

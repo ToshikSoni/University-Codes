@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <title>
+        Hello
+    </title>
+</head>
+
+<body>
+    H<sub>2</sub>
+    <br>
+    2<sup>2</sup>
+    <ol type="A">
+        <li>
+            Hi
+        </li>
+        <li>
+            hello
+        </li>
+    </ol>
+    <a href="https://www.google.com">Google</a>
+    <br>
+    <button onclick="click()">
+        Button
+    </button>
+    <p id="clickb">
+    </p>
+    <script>
+        function click() {
+            document.getElementbyid("clickb").innerHTML = "Hello";
+        }
+    </script>
+    <h1> click here </h1>
+    <h1 id="message" onclick="changeText()"> Click here </h1>
+
+    <input type="text" style="color:green" value="------">
+    <script>
+        function changetext() {
+
+            document.getElementbyid("message").innerHTML = "Good morning!!";
+
+        }
+
+    </script>
+</body>

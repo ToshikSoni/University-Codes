@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<style>
+    button {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<head>
+    <script>function showMsg(x) {
+            var a, b, c;
+            a = document.getElementById("num1").value;
+            b = document.getElementById("num2").value;
+            if (x == '+') { c = parseInt(a) + parseInt(b); }
+            else if (x == '-') { c = parseInt(a) - parseInt(b); }
+            else if (x == '*') { c = parseInt(a) * parseInt(b); }
+            else if (x == '/') { c = parseInt(a) / parseInt(b); }
+            else if (x == '^') { c = Math.pow(a, b); }
+            else if (x == '%') { c = (parseInt(a) / parseInt(b)) * 100; c = c + '%'; }
+            document.getElementById("demo").innerHTML = "The value of " + a + x + b + " is : " + c;
+            alert(x);
+        }</script>
+</head>
+
+<body>
+    <table style="border: solid">
+        <tr>
+            <td style="border: solid; border-right: none">
+                <p>Enter first number:</p>
+                <input type="text" id="num1">
+            </td>
+            <td style="border: solid; border-left:dotted">
+                <p>Enter second number:</p>
+                <input type="text" id="num2">
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td> <button onclick="showMsg('+')"> + </button></td>
+                        <td> <button onclick="showMsg('-')"> - </button></td>
+                        <td> <button onclick="showMsg('*')"> * </button></td>
+                    </tr>
+                    <tr>
+                        <td> <button onclick="showMsg('/')"> / </button></td>
+                        <td> <button onclick="showMsg('^')"> x<sup>y</sup> </button></td>
+                        <td> <button onclick="showMsg('%')"> %</sup> </button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <p id="demo"></p>
+</body>
+
+</html>

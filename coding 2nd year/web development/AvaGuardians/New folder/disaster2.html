@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management</title>
+    <!-- Link to your CSS file for styling -->
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/236x/cf/06/f1/cf06f14297cc6cb307aa8b157a9cf951.jpg">
+    <link rel="stylesheet" href="style3.css">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="https://i.pinimg.com/236x/cf/06/f1/cf06f14297cc6cb307aa8b157a9cf951.jpg" alt="Avalanche Protec Logo" class="logo">
+                <span class="logo-text">Avalanche Protec</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#iot" class="highlighted">IoT</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="donation-box">
+                
+
+                <h2><img src="help.jpg" alt="Avalanche Protec Logo" class="logo">Donation for the Rescued</h2>
+                <p>Helping those who were affected. </p><hr>
+                <a href="upi://pay?pa=8619247818@fam" class="pointer">Donate Now</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Image Slider Section -->
+    <section id="home" class="text-center">
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <!-- ... (Your carousel code) ... -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="https://images.unsplash.com/photo-1555104876-061df4ef2c45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhbGFuY2hlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                
+                <div class="item " style="align-self:center">
+                    <img src="https://images.unsplash.com/photo-1550608993-66351b8814e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhbGFuY2hlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                <div class="item " style="align-self:center;">
+                    <img src="https://images.unsplash.com/photo-1468682958800-5a3a4ede03a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJlc2N1ZSUyMGZvcmNlJTIwZm9yJTIwYXZhbGFuY2hlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                <div class="item" style="align-self: center;">
+                    <img src="https://plus.unsplash.com/premium_photo-1663051334701-346e72a19a80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJlc2N1ZSUyMHBlb3BsZSUyMHNub3d8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                <div class="item" style="align-self:center;">
+                    <img src="https://images.unsplash.com/photo-1609659790745-4b49db06e6e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGF2YWxhbmNoZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                <div class="item" style="align-self:center;">
+                    <img src="https://images.unsplash.com/photo-1618215292552-834427f8be12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzY3VlJTIwZm9yY2UlMjBmb3IlMjBhdmFsYW5jaGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                <div class="item" style="align-self:center;">
+                    <img src="https://images.unsplash.com/photo-1520857228578-149567670c95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHJlc2N1ZSUyMGZvcmNlJTIwZm9yJTIwYXZhbGFuY2hlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+                
+                <div class="item" style="align-self:center;">
+                    <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWElMjByZXNjdWUlMjBmb3JjZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Image 1" style="width: 60%; height: auto; margin: 0 auto;">
+                </div>
+            </div>
+        
+            <!-- Navigation Controls -->
+            <a class="left carousel-control" href="#carouselExample" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carouselExample" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            
+            <!-- Image Indicator -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExample" data-slide-to="1"></li>
+                <li data-target="#carouselExample" data-slide-to="2"></li>
+                <li data-target="#carouselExample" data-slide-to="3"></li>
+                <li data-target="#carouselExample" data-slide-to="4"></li>
+                <li data-target="#carouselExample" data-slide-to="5"></li>
+                <li data-target="#carouselExample" data-slide-to="6"></li>
+                <li data-target="#carouselExample" data-slide-to="7"></li>
+            </ol>
+        </div>
+    </section>
+    <hr>
+    <div class="box" style="width:auto; height:auto;"><h2>Real Time Data Analysis</h2></div><hr>
+    <div class="video-box">
+        
+            <img src="https://media.tenor.com/AApg3F90tXIAAAAC/ibrr-alerts.gif">
+            
+       </div>
+        <div class="controls">
+            <button id="play-pause">Play/Pause</button>
+            <input type="range" id="seek-bar" value="0">
+            <button id="mute">Mute</button>
+            <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+            <button id="full-screen">Full Screen</button>
+        </div>
+    </div>
+    <hr>
+    <div class="box" style="width:400px; height : 100px;"><h2>Mapping of Avalanche Prone Areas</h2></div>
+    <br><hr>
+    <div id="map"></div>
+    <hr>
+    <section id="about" class="text-center cute-box">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Welcome to our website!<img src="handshake.png" class="logo" style="size:50px;"> We are six ambitious students who are passionate about reducing casualties through advanced technology. Together, we've created a system that uses IoT devices to detect and issue warnings of deadly avalanches. Our system allows for prompt response, allowing rescue workers to reach affected areas quickly and save lives.
+<br>
+                We strive to continue innovating in the field of avalanche detection and warning, working tirelessly to ensure that our system remains up-to-date and effective in protecting lives.</p><hr><img src="https://i.pinimg.com/564x/d6/71/9c/d6719cb17570cf605695f50cc1c25c86.jpg" class="logo">
+                <p>Our system combines data from IoT devices with advanced algorithms to detect and issue warnings of deadly avalanches in real time. This allows rescue workers to quickly pinpoint and reach affected areas before it's too late. In addition to saving lives, our systems can also reduce the risks of property damage and infrastructure disruption.
+
+                    We are motivated by the idea of saving lives and reducing the impacts of natural disasters. Our system is designed to be easy to use and highly effective. We are committed to continued innovation and improvement in avalanche detection and warning.</p><hr>
+                    
+        </div>
+    </section>
+    <hr>
+    <div class="box" style="width:auto;"><h2>Our Working Strategy</h2></div>
+    <div class="container">
+        <!-- Left Image Square -->
+        <div class="image-square image-left">
+          <video id="sample-video-1" width="100%" height="100%" autoplay loop>
+            <source src="sample1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="image-text">Our Fuzzy Logic Approach</p>
+        </div>
+      
+        <!-- Right Image Square -->
+        <div class="image-square image-right">
+            <video id="sample-video-2" width="100%" height="100%" autoplay loop>
+              <source src="sample2_2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="image-text">Alert System</p>
+          </div>
+        <!-- Add the other two image squares similarly -->
+        <div class="image-square image-left">
+            <video id="sample-video-3" width="100%" height="100%" autoplay loop>
+              <source src="physical_2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="image-text">Device Architecture</p>
+          </div>
+          <div class="image-square image-right">
+            <video id="sample-video-4" width="100%" height="100%" autoplay loop>
+              <source src="sample4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="image-text">Working Simulation</p>
+          </div>
+    </div>
+    
+    
+    <div class="info-box">
+        <h2>About Disaster Response Forces</h2>
+        <p>The National Disaster Response Force (NDRF) <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/National_Disaster_Response_Force_Logo.png/150px-National_Disaster_Response_Force_Logo.png" >and State Disaster Response Force (SDRF) are specialized forces dedicated to disaster response and relief efforts. They play a crucial role in responding to natural and man-made disasters.</p>
+        <p>Learn more about them:</p>
+        <ul>
+            <li><a href="https://www.ndrf.gov.in/" target="_blank">NDRF Website</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/National_Disaster_Response_Force" target="_blank">NDRF Wikipedia</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/State_Disaster_Response_Force" target="_blank">SDRF Wikipedia</a></li>
+        </ul>
+    </div>
+    <br>
+
+    <section id="services">
+        <div class="box" style="align-self:center;">
+            <h2>Our Services</h2>
+            <ul style="list-style: circle;">
+                <li>Disaster Preparedness</li>
+                <li>Emergency Response</li>
+                <li>Community Outreach</li>
+            </ul>
+            
+        </div>
+    </section>
+    <br><br>
+    
+    <section id="contact">
+        <div class="box" style="align-self:center;">
+            <h2>Contact Us</h2>
+            <p>Email: info@disastermgmt.com</p>
+            <p>Phone: +91 - 13248092480</p>
+        </div>
+    </section>
+<br>
+    <footer>
+        <p>&copy; 2023 Disaster Management Center</p>
+    </footer>
+
+    <!-- Include Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Include your custom script -->
+    <script src="script2.js"></script>
+        <!-- Include Google Maps JavaScript API -->
+        <script>
+            function initMap() {
+                // Define the initial center of the map
+                var mapCenter = { lat: 20.5937, lng: 78.9629 }; // Coordinates for India
+    
+                // Create a map object and specify the DOM element for display
+                var map = new google.maps.Map(document.getElementById('googleMap'), {
+                    center: mapCenter,
+                    zoom: 5 // You can adjust the initial zoom level as needed
+                });
+    
+                // You can add markers, polygons, or other map content to display avalanche-prone areas.
+                // For simplicity, we're just displaying the whole country here.
+                var indiaPolygon = new google.maps.Polygon({
+                    paths: [
+                        { lat: 8.0883, lng: 77.5385 }, // Example coordinates for a polygon (Kanyakumari)
+                        { lat: 37.7749, lng: -122.4194 }, // Example coordinates for a polygon (San Francisco)
+                        // Add more coordinates for your polygon to define avalanche-prone areas
+                    ],
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35
+                });
+    
+                indiaPolygon.setMap(map);
+            }
+        </script>
+</body>
+</html>

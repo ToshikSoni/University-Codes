@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        light
+    </title>
+</head>
+<script>
+    function red() {
+        document.getElementById("b1").style.backgroundColor = "red";
+        setTimeout(green, 5000);
+    }
+    function green() {
+        document.getElementById("b1").style.backgroundColor = "green";
+        setTimeout(yellow, 3000);
+    }
+    function yellow() {
+        document.getElementById("b1").style.backgroundColor = "yellow";
+        setTimeout(red, 1500);
+    }
+</script>
+
+<body>
+    <button id="b1" onclick="red()">hiiiiii</button>
+</body>
+
+</html>

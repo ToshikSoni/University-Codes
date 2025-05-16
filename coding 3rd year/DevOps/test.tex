@@ -1,0 +1,149 @@
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage{graphicx}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Software Requirement Specification},    % title
+    pdfauthor={Jean-Philippe Eisenbarth},                     % author
+    pdfsubject={TeX and LaTeX},                        % subject of the document
+    pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=blue,        % color of external links
+    linktoc=page            % only page is linked
+}%
+\def\myversion{1.0 }
+\date{}
+%\title{%
+
+%}
+\begin{document}
+
+\begin{flushright}
+    \rule{16cm}{5pt}\vskip1cm
+    \begin{bfseries}
+        \Huge{SOFTWARE REQUIREMENTS\\ SPECIFICATION}\\
+        \vspace{1.5cm}
+        for\\
+        \vspace{1.5cm}
+        VastraNXT: Virtual Garment Try-On\\
+        \vspace{1.5cm}
+        \LARGE{Version \myversion}\\
+        \vspace{1.5cm}
+        Prepared by : Toshik Soni (22CS002485)\\
+        \vspace{1.5cm}
+        Submitted to : Dr. Chandani Joshi\\
+        \vspace{1.5cm}
+        \today\\
+    \end{bfseries}
+\end{flushright}
+
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{Purpose}
+This document specifies the software requirements for the 3D Virtual AR Try-on Garment system. The primary goal is to allow customers to virtually try on garments using augmented reality (AR) technology, either through a mobile app or via in-store smart panels. This SRS outlines the product’s intended capabilities, interfaces, system features, and constraints to guide developers, testers, and stakeholders throughout the project lifecycle.
+
+\section{Project Scope}
+The 3D Virtual AR Try-on Garment system provides:
+\begin{itemize}
+    \item \textbf{Augmented Reality Try-On}: Real-time AR rendering of selected garments over the customer’s live video feed.
+
+    \item \textbf{Dual Interface Support}: Implementation on both mobile devices and in-store smart panels.
+
+    \item \textbf{User Management}: Registration, login, and profile management for personalized experiences.
+
+    \item \textbf{Garment Repository}: Storage and retrieval of 3D garment models, textures, and metadata.
+
+    \item \textbf{Session Analytics}: Logging and analyzing user sessions to refine recommendations and system performance.
+\end{itemize}
+
+\section{Definitions, Acronyms, and Abbreviations}
+\begin{itemize}
+    \item \textbf{AR}: Augmented Reality.
+
+    \item \textbf{3D Model}: A digital representation of a garment used for AR overlay.
+
+    \item \textbf{API}: Application Programming Interface.
+
+\item \textbf{GUI}: Graphical User Interface.
+
+\item \textbf{SRS}: Software Requirements Specification.
+
+\item \textbf{PK}: Primary Key.
+
+\item \textbf{UI}: User Interface.
+
+\item \textbf{UX}: User Experience.
+\end{itemize}
+
+\section{References}
+
+\begin{enumerate}
+    \item How Much Time Do Your Customers Spend in the Fitting Room? \& Why Should You Care? \\
+\url{https://alerttech.net/how-much-time-do-customers-spend-in-fitting-room/?form=MG0AV3} 
+
+\item ADOPTION OF VIRTUAL TRY-ON TECHNOLOGY FOR ONLINE APPAREL SHOPPING \\
+\url{https://www.sciencedirect.com/science/article/abs/pii/S1094996808700100}
+
+\item 5 Most Important Retail Industry Benchmarks for Fitting Rooms \\
+\url{https://alerttech.net/retail-industry-benchmarks-for-fitting-rooms/}
+\end{enumerate}
+
+\section{Overview}
+The remainder of this document describes the overall system architecture, detailed requirements, user interface design, data handling, and performance expectations. It is intended for use by the development team, quality assurance engineers, project managers, and other stakeholders.
+
+\chapter{Overall Description}
+
+\section{Product Perspective}
+\section{Product Functions}
+\section{User Classes and Characteristics}
+\section{Operating Environment}
+\section{Design and Implementation Constraints}
+\section{User Documentation}
+
+\chapter{System Features}
+
+\section{User Account Management}
+\section{Garment Catalog and Selection}
+\section{AR Session Management}
+\section{Device and Interface Integration}
+\section{Data Management and Synchronization}
+\section{Feedback and Analytics}
+
+\chapter{External Interface Requirements}
+
+\section{Hardware Interfaces}
+\section{Software Interfaces}
+\section{Communication Interfaces}
+
+\chapter{Non-Functional Requirements}
+
+\section{Performance Requirements}
+\section{Security Requirements}
+\section{Usability Requirements}
+\section{Reliability and Availability}
+\section{Maintainability and Supportability}
+\section{Portability}
+
+\chapter{System Architecture and Data Model}
+
+\section{System Architecture Overview}
+\section{Data Model}
+
+\chapter{Appendices}
+
+\section{Glossary}
+\section{Assumptions and Dependencies}
+\section{Future Enhancements}
+
+\chapter{Revision History}
+
+\end{document}

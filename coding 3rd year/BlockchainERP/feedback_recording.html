@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Recording</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        input,
+        textarea,
+        button {
+            padding: 8px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .output {
+            margin-top: 20px;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Feedback Recording (Student)</h1>
+    <button id="connectButton">Connect Wallet</button>
+    <div id="accountInfo" class="output">Not connected</div>
+    <hr>
+    <input id="formIDInput" type="number" placeholder="Enter Form ID" />
+    <textarea id="answersInput" rows="4" placeholder="Enter your answers as comma-separated values"></textarea>
+    <button id="submitFeedbackButton">Submit Feedback</button>
+    <div id="feedbackResult" class="output"></div>
+
+    <script type="module" src="app_feedbackRecording.js"></script>
+</body>
+
+</html>

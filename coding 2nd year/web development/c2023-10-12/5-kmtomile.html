@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var num=0,out=0;
+        function getnum()
+        {
+            num=document.getElementById("num").value;
+            out=num*0.62137119;
+            document.getElementById("output").innerHTML="The mile is: "+out;
+        }
+    </script>
+</head>
+<body>
+    <input type="number" placeholder="Enter Kilometers" id="num">
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

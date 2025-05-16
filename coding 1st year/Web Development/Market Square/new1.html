@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<style>
+    table,
+    tr,
+    td {
+        border: solid;
+    }
+
+    button {
+        background-color: lightcoral;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<head>
+    <title>Calculator</title>
+    <script>
+        var a = "", b = "", c = "", x = "", op = 0, tempp = "";
+        function showMsg(temp) {
+            x = temp;
+            op = 1;
+            tempp = tempp + x;
+            document.getElementById("demo").innerHTML = tempp;
+        }
+        function calculate() {
+            if (x == '+') { c = parseInt(a) + parseInt(b); }
+            else if (x == '-') { c = parseInt(a) - parseInt(b); }
+            else if (x == '*') { c = parseInt(a) * parseInt(b); }
+            else if (x == '/') { c = parseInt(a) / parseInt(b); }
+            else if (x == '^') { c = Math.pow(a, b); }
+            else if (x == '%') { c = (parseInt(a) / parseInt(b)) * 100; c = c + '%'; }
+            tempp = tempp + "=" + c;
+            document.getElementById("demo").innerHTML = tempp;
+            tempp = ""; a = ""; b = ""; op = 0;
+        }
+        function getnum(temp) {
+            if (op == 0) {
+                a = a + temp;
+                tempp = a;
+            }
+            else {
+                b = b + temp;
+                tempp = a + x + b;
+            }
+            document.getElementById("demo").innerHTML = tempp;
+        }
+        function textClear() {
+            document.getElementById("demo").innerHTML = "";
+            a = "";
+            b = "";
+            op = 0;
+            tempp = ""
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <p id="demo"></p>
+            </td>
+            <td>
+                <button onclick="textClear()"> C </button>
+            </td>
+            <td>
+                <button style="background-color: lightblue;" onclick="calculate()"> = </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="getnum('7')"> 7 </button>
+            </td>
+            <td>
+                <button onclick="getnum('8')"> 8 </button>
+            </td>
+            <td>
+                <button onclick="getnum('9')"> 9 </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('*')"> x </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="getnum('4')"> 4 </button>
+            </td>
+            <td>
+                <button onclick="getnum('5')"> 5 </button>
+            </td>
+            <td>
+                <button onclick="getnum('6')"> 6 </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('-')"> - </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="getnum('1')"> 1 </button>
+            </td>
+            <td>
+                <button onclick="getnum('2')"> 2 </button>
+            </td>
+            <td>
+                <button onclick="getnum('3')"> 3 </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('+')"> + </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="getnum('0')"> 0 </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('%')"> %</sup> </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('^')"> x<sup>y</sup> </button>
+            </td>
+            <td>
+                <button style="background-color: lightgreen;" onclick="showMsg('/')"> / </button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

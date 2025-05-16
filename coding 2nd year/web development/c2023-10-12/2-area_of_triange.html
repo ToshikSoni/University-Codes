@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var num1=0,num2,out=0;
+        function getnum()
+        {
+            num1=document.getElementById("br").value;
+            num2=document.getElementById("hei").value;
+            out=0.5*num1*num2;
+            document.getElementById("output").innerHTML="The area of triangle is: "+out;
+        }
+    </script>
+</head>
+<body>
+    <input type="number" placeholder="Enter Breadth" id="br">
+    <input type="number" placeholder="Enter Height" id="hei">
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

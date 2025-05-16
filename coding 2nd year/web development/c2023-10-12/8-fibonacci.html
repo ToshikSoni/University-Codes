@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function getnum() {
+            var num = 0, num1 = 0, num2 = 1, temp, str = "";
+            num = document.getElementById("num").value;
+            for (let i = 0; i < num; i++) {
+                str = str + num1 + ' ';
+                temp = num2;
+                num2 = num1 + num2;
+                num1 = temp;
+            }
+            document.getElementById("output").innerHTML = "The square root of number is: " + str;
+        }
+    </script>
+</head>
+<body>
+    <input type="number" placeholder="Enter Number of terms" id="num">
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

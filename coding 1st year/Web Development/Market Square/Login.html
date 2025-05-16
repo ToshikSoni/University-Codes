@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Login Page
+    </title>
+    <link rel="icon" type="image/x-icon" href="fevicon.png">
+    <link rel="stylesheet" type="text/css" href="MarketSquare.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    function search() {
+        if (document.getElementById("inputBar").value == "Laptop")
+            window.location.href = "Laptop.html";
+    }
+</script>
+<style>
+    table,
+    tr,
+    td {
+        padding-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 20px;
+    }
+</style>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="About.html">About</a>
+        <a href="Chat.html">Chat</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+        <a href="BecomeSeller.html">Become a Seller</a>
+    </div>
+
+    <body>
+        <img src="background.jpg" style="z-index: -1;position: fixed;opacity: 0.3;" width="100%">
+        <div class="navbar">
+            <span
+                style="float: left; color:white; margin-top: 2px; margin-left: 15px; margin-right: 7px; font-size: 30px;"
+                onclick="
+                openNav()">&#9776;</span>
+
+            <img src="fevicon.png" width="50px" height="50px" style="float: left; margin-left: 10px;">
+            <a href="index.html" style="float: right">Home</a>
+            <span style="float: right">
+                <input id="inputBar" style="margin-top: 15px;" name="Search items" type="text">
+                <button onclick="search()" id="inputButton">
+                    search
+                </button></span>
+        </div>
+        <br><br><br><br><br><br><br>
+        <table style="border:solid;">
+            <tr>
+                <td colspan="2">
+                    <input type="text" style="text-align: center;font-size: 20px;" placeholder="Enter Username">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" style="text-align: center;font-size: 20px;" placeholder="Enter Password">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <button style="font-size: 20px;">Sign in</button>
+                </td>
+                <td align="center">
+                    <button style="font-size: 20px;">Sign up</button>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+</html>

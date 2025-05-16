@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Marketplace</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Online Marketplace</h1>
+  </header>
+
+  <section>
+    <h2>Seller Registration</h2>
+    <form action="seller_registration.php" method="POST">
+      <input type="text" name="seller_name" placeholder="Seller Name" required>
+      <input type="email" name="seller_email" placeholder="Email Address" required>
+      <input type="text" name="shop_address" placeholder="Shop Address">
+      <!-- Additional fields for seller details -->
+
+      <input type="submit" value="Register as Seller">
+    </form>
+  </section>
+
+  <section>
+    <h2>Item Listings</h2>
+    <div class="item-list">
+      <!-- Display item listings dynamically using server-side code -->
+      <div class="item">
+        <h3>Item Title</h3>
+        <p>Item Description</p>
+        <p>Price: $X</p>
+        <!-- Additional item details -->
+        <button class="contact-seller">Contact Seller</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Seller</h2>
+    <div class="chat">
+      <!-- Display chat messages dynamically using server-side code -->
+      <div class="message">
+        <p>Seller: Hello, how can I help you?</p>
+      </div>
+    </div>
+    <form class="message-form">
+      <input type="text" name="message" placeholder="Type your message">
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <h2>Feedback</h2>
+    <form action="feedback.php" method="POST">
+      <textarea name="feedback" placeholder="Your feedback"></textarea>
+      <input type="submit" value="Submit">
+    </form>
+  </footer>
+</body>
+</html>

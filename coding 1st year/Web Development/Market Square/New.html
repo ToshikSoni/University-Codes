@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<title>My First Website</title>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    div {
+        width: 180px;
+        height: 100px;
+        background-color: red;
+        animation-name: example;
+        animation-duration: 4s;
+        animation-iteration-count: 3;
+        position:relative;
+    }
+
+    @keyframes example {
+        0% {
+            background-color: red;
+            left: 0px;
+            top: 0px
+        }
+
+        25% {
+            background-color: green;
+            left: 200px;
+            top: 0px
+        }
+
+        50% {
+            background-color: blue;
+            left: 200px;
+            top: 200px
+        }
+
+        75% {
+            background-color: yellow;
+            left: 0px;
+            top: 200px
+        }
+
+        100% {
+            background-color: red;
+            left: 0px;
+            top: 0px
+        }
+    }
+
+    body {
+        background-image: url(bgi.jpg);
+        background-attachment: scroll;
+        background-size: cover;
+    }
+</style>
+
+
+<body>
+
+    <a href="C:\Users\tsoni\OneDrive\Desktop\coding\Web Development\next.html">Next page</a> <img src="edit.jpg "
+        alt="Image " width="500 " height="500 " class="center"></img>
+        <div></div>
+    <marquee style="text-align: center; font-size: 300%; color:red ;" behavior=slide direction=left scrollamount="30">
+        HII!</marquee>
+
+    <marquee style="text-align: center;" behavior=slide direction=up>
+        <h1 style="background-color: aqua;">My Name is Toshik</h1>
+    </marquee>
+    <a style="text-align: center;color: purple; font-size: 30px; "
+        href="https://www.linkedin.com/in/toshik-soni-06371b273/">
+        <p><b>My LinkedIn</b></p>
+    </a>
+    <h2 style="text-align: center;">I am learing web
+        <i>development</i>
+    </h2>
+    <h3 style=" text-align: center; color:green ">I am in <u>second </u><b>semester</b></h3>
+    <table style="width=100%;">
+        <tr>
+            <td>Name</td>
+            <td>Email Id</td>
+            <td>Phone Number</td>
+        </tr>
+        <tr>
+            <td>Toshik Soni</td>
+            <td>tsoni.kota@gmail.com</td>
+            <td>+91 8619247818</td>
+        </tr>
+    </table>
+    <br>
+    <p>I am good in:</p>
+    <ul>
+        <li>C++</li>
+        <li>C</li>
+        <li>Java</li>
+        <li>HTML</li>
+    </ul>
+    <audio controls autoplay class=" center ">
+        <source src="crab.mp3 " type="audio/mpeg ">
+    </audio>
+    <br>
+    <video width="346 " height="600 " controls autoplay class="center ">
+        <source src="vid1.mp4 " type="video/mp4 ">
+    </video>
+
+</body>
+
+</html>

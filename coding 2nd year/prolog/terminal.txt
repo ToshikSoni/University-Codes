@@ -1,0 +1,1 @@
+swipl -l "C:\Users\tsoni\Desktop\coding\coding 2nd year\prolog\c2023-08-23-q1.pl"

@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="images/OIG.png">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <title>Foodify</title>
+</head>
+<style>
+    #hero {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+    }
+
+    #hero video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    #hero .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    #hero .img-container {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    .navbar {
+        overflow-y: auto;
+        max-height: 70vh;
+    }
+</style>
+
+
+<body style="background-color: rgb(27, 38, 44)">
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Signup</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="signupName" placeholder="Enter Name">
+                    <input type="number" class="form-control" id="signupPhone" placeholder="Enter Contact">
+                    <input type="email" class="form-control" id="signupEmail" placeholder="Enter email">
+                    <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+                    <button class="btn btn-primary" onclick="setCustomer()">Signup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginpModalLabel">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                    <button class="btn btn-primary" onclick="getCustomer()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Cart items will go here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <h5 id="totalPrice">Total: </h5>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="clearCart()">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Item is added to cart.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top bg-transparent"
+        style="-webkit-backdrop-filter: blur(8px);backdrop-filter: blur(8px);">
+        <div class="container-fluid" style="text-shadow: 0px 0px 15px black;">
+            <a class="navbar-brand" href="#" style="font-weight: 700;">
+                <img src="images/OIG.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                Foodify
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"
+                            style="color: white;font-weight: 600;text-shadow: 0px 0px 10px black;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#app"
+                            style="color: white;font-weight: 600;text-shadow: 0px 0px 10px black;">Appetizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#main"
+                            style="color: white;font-weight: 600;text-shadow: 0px 0px 10px black;">Main
+                            Course</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dessert"
+                            style="color: white;font-weight: 600;text-shadow: 0px 0px 10px black;">Dessert</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ice"
+                            style="color: white;font-weight: 600;text-shadow: 0px 0px 10px black;">Ice
+                            Creams</a>
+                    </li>
+                </ul>
+                <button class="d-flex" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#cartModal" style="background-color: transparent; border: 0;" onclick="getCart()">
+                    <img src="images/cart.png" width="35px">
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Login
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+                    Signup
+                </button>
+            </div>
+
+        </div>
+    </nav>
+    <section id="hero" class="d-flex align-items-center" style="width: 100%;">
+        <video autoplay muted loop id="myVideo" style="width: 100%;">
+            <source src="videoplayback.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="img-container">
+                <img src="images/Logo.png" class="img-fluid" alt="Logo" style="max-width: 250px;">
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4" style="margin: 2%;">
+            <section id="app">
+                <div class="col">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <img src="images/app.jpg" class="card-img-top" alt="Appetizer"
+                            style="background-color: rgb(50,130,184);">
+                        <div class="card-body" style="background-color: rgb(15, 76, 117);">
+                            <div class="accordion" id="accordionOne">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne" style="background-color: aliceblue;">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne">
+                                            <h3>Appetizers</h3>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+                                        <div class="accordion-body" style="color: black;">
+                                            <div class="container" style="width: 100%;padding: 0px;margin: 0px;">
+                                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="images/potato.jpg"
+                                                                alt="Potato">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Parmesan Crusted Potatoes
+                                                                </h5>
+                                                                <p class="card-text">
+                                                                    Parmesan Crusted Potatoes offers a delightful
+                                                                    combination of soft, tender potatoes with a crispy
+                                                                    and flavorful parmesan cheese crust.
+                                                                    <br>
+                                                                    <strong>
+                                                                        $1.99
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="addToCart('101','2')">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="images/samosa.jpg"
+                                                                alt="Punjabi Samosa">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Punjabi Samosa</h5>
+                                                                <p class="card-text">
+                                                                    These samosa turn out perfect every time with a
+                                                                    crispy, flaky outer cover and deliciously spiced
+                                                                    potato stuffing.
+                                                                    <br>
+                                                                    <strong>
+                                                                        $2.99
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="addToCart(102,1)">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="main">
+                <div class="col">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <img src="images/main.jpg" class="card-img-top" alt="Main Course"
+                            style="background-color: rgb(50,130,184);">
+                        <div class="card-body" style="background-color: rgb(15, 76, 117);">
+                            <div class="accordion" id="accordionTwo">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo" style="background-color: aliceblue;">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            <h3>Main Course</h3>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionTwo">
+                                        <div class="accordion-body" style="color: black;">
+                                            <div class="container" style="width: 100%;padding: 0px;margin: 0px;">
+                                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="images/dalpak.jpg"
+                                                                alt="Dal Pakwan">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Dal Pakwan</h5>
+                                                                <p class="card-text">
+                                                                    Dal pakwan is the most popular Sindhi breakfast or
+                                                                    brunch dish made on special occasions or weekends.
+                                                                    <br>
+                                                                    <strong>
+                                                                        $0.99
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="addToCart(103)">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="images/makki.jpg"
+                                                                alt="Makki Ki Roti">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Makki Ki Roti</h5>
+                                                                <p class="card-text">
+                                                                    A classic North Indian (Punjabi) makki ki roti is
+                                                                    made during winter months and served with sarson ka
+                                                                    saag.
+                                                                    <br>
+                                                                    <strong>
+                                                                        $3.99
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="addToCart(104)">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="dessert">
+                <div class="col">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <img src="images/dessert.jpg" class="card-img-top" alt="Main Course"
+                            style="background-color: rgb(50,130,184);">
+                        <div class="card-body" style="background-color: rgb(15, 76, 117);">
+                            <div class="accordion" id="accordionThree">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree" style="background-color: aliceblue;">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            <h3>Dessert</h3>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionThree">
+                                        <div class="accordion-body" style="color: black;">
+                                            <div class="container" style="width: 100%;padding: 0px;margin: 0px;">
+                                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="..." alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">...</h5>
+                                                                <p class="card-text">
+                                                                    ...
+                                                                    <br>
+                                                                    <strong>
+                                                                        ...
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="..." alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">...</h5>
+                                                                <p class="card-text">
+                                                                    ...
+                                                                    <br>
+                                                                    <strong>
+                                                                        ...
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="ice">
+                <div class="col">
+                    <div class="card text-white bg-dark mb-3 ">
+                        <img src="images/icecream.jpg" class="card-img-top" alt="Main Course"
+                            style="background-color: rgb(50,130,184);">
+                        <div class="card-body" style="background-color: rgb(15, 76, 117);">
+                            <div class="accordion" id="accordionFour">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour" style="background-color: aliceblue;">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                            <h3>Ice Creams</h3>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="headingFour" data-bs-parent="#accordionFour">
+                                        <div class="accordion-body" style="color: black;">
+                                            <div class="container" style="width: 100%;padding: 0px;margin: 0px;">
+                                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="..." alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">...</h5>
+                                                                <p class="card-text">
+                                                                    ...
+                                                                    <br>
+                                                                    <strong>
+                                                                        ...
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="..." alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">...</h5>
+                                                                <p class="card-text">
+                                                                    ...
+                                                                    <br>
+                                                                    <strong>
+                                                                        ...
+                                                                    </strong>
+                                                                </p>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleModal">
+                                                                    Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    async function addToCart(item_id) {
+        try {
+            const response = await fetch('http://localhost:3000/addToCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ item_id }),
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Fetch Error:', error);
+        }
+    }
+
+    async function getCart() {
+        try {
+            const response = await fetch('http://localhost:3000/getCart');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const tableBody = document.querySelector('#cartModal .modal-body .table tbody');
+            document.getElementById("totalPrice").innerHTML = 'Total is: ' + data.total;
+            tableBody.innerHTML = '';  // Clear the table body
+            data.result.rows.forEach(row => {
+                const tr = document.createElement('tr');
+                row.forEach(cell => {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
+        } catch (error) {
+            console.error('Fetch Error:', error);
+        }
+    }
+
+    async function clearCart() {
+        try {
+            const response = await fetch('http://localhost:3000/clearCart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            alert('Fetch Error:', error);
+        }
+    }
+
+    async function getCustomer() {
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        try {
+            const response = await fetch('http://localhost:3000/getCustomer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await response.json();
+            alert(data.message);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log(data);
+        } catch (error) {
+            console.error('Fetch Error:', error);
+        }
+    }
+    async function setCustomer() {
+        const name = document.getElementById('signupName').value;
+        const phone = document.getElementById('signupPhone').value;
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        try {
+            const response = await fetch('http://localhost:3000/setCustomer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, phone, email, password }),
+            });
+            const data = await response.json();
+            alert(data.message);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log(data);
+        } catch (error) {
+            console.error('Fetch Error:', error);
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "Car",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"coding 3rd year/solidity/q2.sol": "B"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"coding 3rd year/solidity/q2.sol": {
+			"keccak256": "0xaf6095d48e3225495eb0abad731cbd0e051071664ea4617ad38fcca93b998d3f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://faa0c601ffbfb299c61b8b3e1dcb137e7c4d00e1bdbc268b26366dd709a54c65",
+				"dweb:/ipfs/QmccDHx2SVUhTWbCfEHTpDA3vu2y9xyYvgxN64oNUg46a1"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Expert System</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>
+            Laptop Recommendation
+        </h1>
+        <br>
+        <div class="col">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="use">Use</label>
+                <select class="form-select" id="use">
+                    <option value="General">General</option>
+                    <option value="Business">Business</option>
+                    <option value="Gaming">Gaming</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col border rounded bg-light" style="padding: 1%;">
+            <label for="customRange3" class="form-label">Budget</label>
+            <input type="range" class="form-range" min="50000" max="100000" step="1000" id="rangeInput" value="70000">
+            <p id="rangeValue">
+                Budget is: 70000
+            </p>
+        </div>
+        <br>
+        <div class="col">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="cpu">CPU Company</label>
+                <select class="form-select" id="cpu">
+                    <option value="AMD">AMD</option>
+                    <option value="Intel">Intel</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="ram">RAM Size</label>
+                <select class="form-select" id="ram">
+                    <option value="8 GB">8 GB</option>
+                    <option value="16 GB">16 GB</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="recommendBtn">Get Recommendation</button>
+        <div class="mt-4" id="recommendation">
+        </div>
+    </div>
+    <script>
+        var rangeInput = document.getElementById("rangeInput");
+        var rangeValue = document.getElementById("rangeValue");
+        rangeInput.oninput = function () {
+            rangeValue.innerHTML = "Budget is: " + this.value;
+        }
+        var laptops = [
+            { name: 'Asus Vivobook OLED', cpu: 'Intel', ram: '8 GB', use: ['Business'], price: 70000 },
+            { name: 'HP Pavallion Gaming', cpu: 'AMD', ram: '16 GB', use: ['Gaming'], price: 80000 },
+            { name: 'Asus TUF Gaming', cpu: 'Intel', ram: '16 GB', use: ['Business', 'Gaming'], price: 100000 },
+            { name: 'HP Pavallion', cpu: 'Intel', ram: '8 GB', use: ['General'], price: 50000 },
+            { name: 'Dell Latitude', cpu: 'Intel', ram: '16 GB', use: ['General'], price: 70000 },
+            { name: 'Asus Vivobook 16X', cpu: 'Intel', ram: '8 GB', use: ['Business'], price: 50000 },
+            { name: 'Lenovo Thinkpad', cpu: 'AMD', ram: '8 GB', use: ['Business'], price: 50000 },
+            { name: 'Lenovo Yoga', cpu: 'AMD', ram: '8 GB', use: ['Business'], price: 80000 },
+            { name: 'Dell XPS', cpu: 'AMD', ram: '16 GB', use: ['Business'], price: 90000 },
+            { name: 'Dell Vastro', cpu: 'AMD', ram: '8 GB', use: ['General'], price: 50000 },
+            { name: 'HP Dragonfly', cpu: 'AMD', ram: '16 GB', use: ['General'], price: 80000 },
+            { name: 'Dell G15', cpu: 'Intel', ram: '8 GB', use: ['Gaming'], price: 60000 },
+        ];
+        document.getElementById("use").addEventListener("change", function () {
+            var use = this.value;
+            var cpuSelect = document.getElementById("cpu");
+            var ramSelect = document.getElementById("ram");
+            var budgetSelect = document.getElementById("rangeInput");
+            switch (use) {
+                case 'Gaming':
+                    cpuSelect.value = 'Intel';
+                    ramSelect.value = '16 GB';
+                    budgetSelect.value = '100000';
+                    document.getElementById("rangeValue").innerHTML = "Budget is: 100000";
+                    break;
+                case 'Business':
+                    cpuSelect.value = 'AMD';
+                    ramSelect.value = '16 GB';
+                    budgetSelect.value = '90000';
+                    document.getElementById("rangeValue").innerHTML = "Budget is: 90000";
+                    break;
+                case 'General':
+                    cpuSelect.value = 'AMD';
+                    ramSelect.value = '8 GB';
+                    budgetSelect.value = '50000';
+                    document.getElementById("rangeValue").innerHTML = "Budget is: 50000";
+                    break;
+            }
+        });
+        document.getElementById("recommendBtn").addEventListener("click", function () {
+            var budget = document.getElementById("rangeInput").value;
+            var cpu = document.getElementById("cpu").value;
+            var ram = document.getElementById("ram").value;
+            var use = document.getElementById("use").value;
+
+            var recommendations = laptops.filter(function (laptop) {
+                return laptop.cpu === cpu && laptop.ram === ram && laptop.use.includes(use) && laptop.price <= budget;
+            });
+            var recommendationText = recommendations.length > 0
+                ? '<h3>We recommend: </h3><br>' + recommendations.map(function (laptop) { return '<h5>' + laptop.name + '</h5>' + 'RAM: ' + laptop.ram + ', ' + 'CPU: ' + laptop.cpu + ', ' + 'Budget: ' + laptop.price; }).join("<br><br>")
+                : '<h3>No laptops found that match your criteria.</h3>';
+
+            document.getElementById("recommendation").innerHTML = recommendationText;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

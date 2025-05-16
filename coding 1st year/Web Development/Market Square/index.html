@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        MarketSquare
+    </title>
+    <link rel="icon" type="image/x-icon" href="fevicon.png">
+    <link rel="stylesheet" type="text/css" href="MarketSquare.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    function change1() {
+        setTimeout(change2, 2000);
+        document.getElementById("img").style.backgroundImage = 'url("about2.jpg")';
+    }
+    function change2() {
+        setTimeout(change3, 2000);
+        document.getElementById("img").style.backgroundImage = 'url("about3.jpg")';
+    }
+    function change3() {
+        setTimeout(change1, 2000);
+        document.getElementById("img").style.backgroundImage = 'url("about1.jpg")';
+    }
+    function search() {
+        if (document.getElementById("inputBar").value == "Laptop")
+            window.location.href = "Laptop.html";
+    }
+</script>
+<div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="About.html">About</a>
+    <a href="Chat.html">Chat</a>
+    <a href="Services.html">Services</a>
+    <a href="Contant.html">Contact</a>
+    <a href="BecomeSeller.html">Become a Seller</a>
+</div>
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+
+<body onload="change1()">
+
+    <img src="background.jpg" style="z-index: -1;position: fixed;opacity: 0.3;" width="100%">
+    <div class="navbar">
+        <span style="float: left; color:white; margin-top: 2px; margin-left: 15px; margin-right: 7px; font-size: 30px;"
+            onclick="
+            openNav()">&#9776;</span>
+
+        <img src="fevicon.png" width="50px" height="50px" style="float: left; margin-left: 10px;">
+        <a href="Login.html" style="float: right">Login</a>
+        <span style="float: right">
+            <input id="inputBar" style="margin-top: 15px;" name="Search items" type="text">
+            <button onclick="search()" id="inputButton">
+                search
+            </button></span>
+    </div>
+    <h1 id="img" class="fade-in-image"
+        style="text-align: center; font-size: 100px;background-image: url(about1.jpg); font-family: system-ui;margin-top: 52px;padding:60px;background-repeat: no-repeat;background-size: cover">
+        MarketSquare</h1>
+    <p1 style="margin-left:7%; font-size: 23px;display: block; margin-right:7%">
+        <br><br>
+        <table style="display: block;margin-left: 7%;">
+            <tr>
+                <td>
+                    <div class="container">
+                        <a href="Laptop.html">
+                            <img class="image" src="mainimg1.jpg" width="300px"></a>
+                    </div>
+                </td>
+                <td>
+                    <div class="container">
+                        <img class="image" src="mainimg2.jpg" width="300px">
+                    </div>
+                </td>
+                <td>
+                    <div class="container">
+                        <img class="image" src="mainimg3.jpg" width="300px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Laptops
+                </td>
+                <td>
+                    Smartphones
+                </td>
+                <td>
+                    Headphones
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="container">
+                        <img class="image" src="mainimg4.jpg" width="300px">
+                    </div>
+                </td>
+                <td>
+                    <div class="container">
+                        <img class="image" src="mainimg5.jpg" width="300px" height="300px">
+                    </div>
+                </td>
+                <td>
+                    <div class="container">
+                        <img class="image" src="mainimg6.jpg" width="300px" height="300px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Boys Clothing
+                </td>
+                <td>
+                    Girls Clothing
+                </td>
+                <td>
+                    Home Appliances
+                </td>
+            </tr>
+        </table>
+    </p1>
+</body>
+</html>

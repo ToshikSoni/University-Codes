@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function getnum() {
+            var num, temp, temp1 = 0, temp2, dig = 0;
+            num = document.getElementById("num").value;
+            temp = num;
+            while (temp > 0) {
+                dig++;
+                temp = Math.floor(temp/10);
+            }
+            temp = num;
+            while (temp > 0) {
+                temp2 = temp % 10;
+                temp = Math.floor(temp/10);
+                temp1 += Math.pow(temp2, dig);
+            }
+            if (temp1 == num)
+                document.getElementById("output").innerHTML = "The number is armstrong";
+            else
+                document.getElementById("output").innerHTML = "The number is not armstrong";
+        }
+    </script>
+</head>
+<body>
+    <input type="number" placeholder="Enter Number" id="num">
+    <input type="submit" onclick="getnum()">
+    <p id="output"></p>
+</body>
+</html>

@@ -1,0 +1,1 @@
+loop(A):-A>0,write("Toshik "),write(A),nl,Y is A-1,loop(Y).
